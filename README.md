@@ -2,6 +2,8 @@
 
 ![Alt text](/demo.gif?raw=true 'Application Main Screen')
 
+![Alt text](/tests.jpg?raw=true 'Tests')
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
 
 ## Development server
