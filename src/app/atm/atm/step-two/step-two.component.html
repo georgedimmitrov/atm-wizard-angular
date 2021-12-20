@@ -1,0 +1,11 @@
+<form [formGroup]="operationFormGroup">
+  <div class="radio-btn-group">
+    <label
+      [class.active]="operation === operationFormControl.value"
+      *ngFor="let operation of atmOperations"
+    >
+      <input type="radio" [value]="operation" formControlName="option" />
+      <span>{{ getNormalizedOperationName(operation) }}</span>
+    </label>
+  </div>
+</form>

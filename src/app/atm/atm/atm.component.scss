@@ -1,0 +1,37 @@
+.wrapper {
+  padding: 1rem;
+  width: 60vw;
+  text-align: center;
+  border: 1px solid #cecece;
+
+  .hidden {
+    display: none;
+  }
+
+  main {
+    min-height: 50px;
+    margin-top: 30px;
+  }
+}
+
+.footer {
+  margin-top: 0.7rem;
+  display: flex;
+  justify-content: space-between;
+
+  &.is-result-step {
+    flex-flow: row-reverse;
+  }
+}
+
+.testing-purposes {
+  display: inline-block;
+  padding: 1rem;
+  margin-top: 100px;
+  border: 1px solid #cecece;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+}

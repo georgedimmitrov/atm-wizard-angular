@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <header>
+    <h2>{{ currentStep?.getTitle() || '' }}</h2>
+  </header>
+  <main>
+    <app-step-one [class.hidden]="currentStep?.index !== 1" #stepOneComponent>
+    </app-step-one>
+
+    <app-step-two [class.hidden]="currentStep?.index !== 2" #stepTwoComponent>
+    </app-step-two>
+
+    <app-step-three
+      [class.hidden]="currentStep?.index !== 3"
+      #stepThreeComponent
+    >
+    </app-step-three>
+
+    <app-step-four [class.hidden]="currentStep?.index !== 4" #stepFourComponent>
+    </app-step-four>
+
+    <app-step-five [class.hidden]="currentStep?.index !== 5" #stepFiveComponent>
+    </app-step-five>
+  </main>
+
+  <footer class="footer" [class.is-result-step]="currentStep?.index === 1 || currentStep?.index === 5">
+    <button *ngIf="currentStep?.index !== 1 && currentStep?.index !== 5"
+            class="cancel-btn"
+            (click)="cancel()">Cancel</button>
+    <button
+      class="next-btn"
+      *ngIf="currentStep?.index !== 5; else startOverButton"
+      [disabled]="!currentStep?.isValid()"
+      (click)="next()"
+    >
+      Next
+    </button>
+
+    <ng-template #startOverButton>
+      <button class="start-over-btn" (click)="startOver()">Start Over</button>
+    </ng-template>
+  </footer>
+</div>
+
+<div class="testing-purposes">
+  <h4>For testing purposes</h4>
+  <span>Current Amount: {{ currentAmount }}</span> |
+  <span>Current PIN: {{ currentPin }}</span>
+</div>

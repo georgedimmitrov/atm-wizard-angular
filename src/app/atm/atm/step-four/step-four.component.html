@@ -1,0 +1,28 @@
+<form [formGroup]="pinNumberFormGroup">
+  <input
+    placeholder="Please enter current PIN"
+    class="max-width-input current-pin-input"
+    formControlName="pinNumber"
+    type="number"
+  />
+
+  <div
+    class="error"
+    *ngIf="
+      pinNumberFormControl.touched &&
+      pinNumberFormControl.errors?.required
+    "
+  >
+    PIN is required
+  </div>
+
+  <div
+    class="error"
+    *ngIf="
+      pinNumberFormControl.touched &&
+      pinNumberFormControl.errors?.pattern
+    "
+  >
+    Please enter 4 numbers
+  </div>
+</form>

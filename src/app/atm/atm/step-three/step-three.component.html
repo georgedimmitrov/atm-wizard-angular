@@ -1,0 +1,95 @@
+<form [formGroup]="amountFormGroup">
+  <ng-container *ngIf="operation === 'WITHDRAW'">
+    <input
+      class="max-width-input amount-input"
+      placeholder="Please enter the amount to withdraw"
+      formControlName="amount"
+      type="number"
+    />
+
+    <div
+      class="error"
+      *ngIf="
+        amountFormControl?.touched &&
+        amountFormControl?.errors?.required
+      "
+    >
+      Amount is required
+    </div>
+
+    <div
+      class="error"
+      *ngIf="
+         amountFormControl?.touched &&
+        !amountFormControl?.errors?.required &&
+        amountFormControl?.errors?.nonPositive
+      "
+    >
+      Positive numbers only
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="operation === 'CHANGE_PIN'">
+    <div class="labeled-control">
+      <label for="oldPin">Current PIN</label>
+      <input
+        class="max-width-input current-pin-input"
+        placeholder="Please enter current PIN"
+        id="oldPin"
+        formControlName="oldPin"
+        type="number"
+      />
+
+      <div
+        class="error"
+        *ngIf="
+          oldPinFormControl.touched &&
+          oldPinFormControl.errors?.required
+        "
+      >
+        Current PIN is required
+      </div>
+
+      <div
+        class="error"
+        *ngIf="
+          oldPinFormControl.touched &&
+          oldPinFormControl.errors?.pattern
+        "
+      >
+        Please enter 4 numbers
+      </div>
+    </div>
+
+    <div class="labeled-control">
+      <label for="newPin">New PIN</label>
+      <input
+        id="newPin"
+        class="max-width-input new-pin-input"
+        placeholder="Please enter new PIN"
+        formControlName="newPin"
+        type="number"
+      />
+
+      <div
+        class="error"
+        *ngIf="
+          (newPinFormControl?.touched) &&
+          newPinFormControl?.errors?.required
+        "
+      >
+        New PIN is required
+      </div>
+
+      <div
+        class="error"
+        *ngIf="
+          (newPinFormControl?.touched) &&
+          newPinFormControl?.errors?.pattern
+        "
+      >
+        Please enter 4 numbers
+      </div>
+    </div>
+  </ng-container>
+</form>

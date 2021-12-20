@@ -1,0 +1,27 @@
+<form [formGroup]="cardNumberFormGroup">
+  <input
+    class="max-width-input"
+    placeholder="Please enter your card number"
+    formControlName="cardNumber"
+    type="number"
+  />
+
+  <div
+    class="error"
+    *ngIf="
+      cardNumberFormControl.touched &&
+      cardNumberFormControl.errors?.required
+    "
+  >
+    Card Number is required
+  </div>
+
+  <div
+    class="error"
+    *ngIf="cardNumberFormControl.invalid &&
+      cardNumberFormControl.touched &&
+      cardNumberFormControl.errors?.pattern"
+  >
+    Please enter 12 numbers
+  </div>
+</form>
