@@ -1,10 +1,23 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {
+  RouterModule,
+  Routes,
+  PreloadAllModules,
+  NoPreloading,
+} from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/atm' },
+  {
+    path: 'atm',
+    loadChildren: () => import('./atm/atm.module').then((m) => m.AtmModule),
+  },
+  { path: '**', pathMatch: 'full', redirectTo: '/atm' },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
